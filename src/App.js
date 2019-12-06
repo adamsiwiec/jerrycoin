@@ -9,8 +9,9 @@ import { getTransactionPool, setTransactionPool } from "./crypto/transactionPool
 import {
   handleBlockchainResponse
 } from "./crypto/p2p";
-    const socket = io('http://jerry-server.herokuapp.com');
-
+    const socket = io('http://jerry-server.herokuapp.com', {
+      transports: ['websocket']
+    });
 function App() {
 
     const [data, setData] = useState(0);
