@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ae7f9562da6500927a40b41ddf8912ea",
+    "revision": "6837d6120672f220f932398d3838425a",
     "url": "/jerrycoin/index.html"
   },
   {
-    "revision": "64d66089e00b2ddb9ab5",
+    "revision": "cb9ad4ccfdf9928f3503",
     "url": "/jerrycoin/static/css/main.d1b05096.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jerrycoin/static/js/2.d7a86fa1.chunk.js.LICENSE"
   },
   {
-    "revision": "64d66089e00b2ddb9ab5",
-    "url": "/jerrycoin/static/js/main.33a0d6ae.chunk.js"
+    "revision": "cb9ad4ccfdf9928f3503",
+    "url": "/jerrycoin/static/js/main.c8d790c5.chunk.js"
   },
   {
     "revision": "d399cb83b011b2c7e2be",
