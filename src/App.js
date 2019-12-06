@@ -3,9 +3,13 @@ import io from 'socket.io-client';
 import logo from './logo.svg';
 import './App.css';
 import {generatePrivateKey, getPublicFromWallet} from './crypto/wallet';
-import {sendTransaction, generateNextBlock, getAccountBalance, getBlockchain, setBlockchain} from "./crypto/blockchain"
+import {sendTransaction, generateNextBlock, getAccountBalance, getBlockchain, setBlockchain, replaceChain} from "./crypto/blockchain"
 import { useCookies } from 'react-cookie';
 import { getTransactionPool, setTransactionPool } from "./crypto/transactionPool"
+import {
+  handleBlockchainResponse
+} from "./crypto/p2p";
+    const socket = io('http://jerry-server.herokuapp.com');
 
 function App() {
 
@@ -18,7 +22,6 @@ function App() {
     const [address, setAddress] = useState("");
     const [amount, setAmount] = useState(0);
     const [bc, setBc] = useState(getBlockchain());
-            const socket = io('http://jerry-server.herokuapp.com');
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
@@ -40,8 +43,8 @@ function App() {
         socket.on("resBlockchain", (bc) => {
           console.log("got bc:", bc);
           if(bc.length > 0) {
-  setBlockchain(bc);
-  setBc(bc);
+handleBlockchainResponse(bc)
+ setBc(bc);
           }
         })
 
@@ -53,7 +56,7 @@ function App() {
               socket.on("bc", (bc) => {
                 console.log("got bc:", bc);
                 if (bc.length > 0) {
-                  setBlockchain(bc);
+                  handleBlockchainResponse(bc);
                   setBc(bc);
                 }
               })
@@ -79,7 +82,7 @@ function App() {
         return () => {
           socket.emit("disconnect");
         }
-  }, [cookies, privateKey, first, setBalance, setPrivateKey, removeCookie, setCookie, socket]);
+  }, [cookies, privateKey, first, setBalance, setPrivateKey, removeCookie, setCookie]);
 
 
   return (

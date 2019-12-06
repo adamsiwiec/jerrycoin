@@ -190,4 +190,4 @@ const broadCastTransactionPool = () => {
     broadcast(responseTransactionPoolMsg());
 };
 
-export {connectToPeers, broadcastLatest, broadCastTransactionPool, initP2PServer, getSockets};
+export {handleBlockchainResponse, connectToPeers, broadcastLatest, broadCastTransactionPool, initP2PServer, getSockets};
