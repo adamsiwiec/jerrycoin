@@ -1,3 +1,7 @@
+// import "assets/vendor/nucleo/css/nucleo.css";
+// import "assets/vendor/font-awesome/css/font-awesome.min.css";
+// import "assets/scss/argon-design-system-react.scss";
+
 import React, {useState, useEffect} from 'react';
 import io from 'socket.io-client';
 import logo from './logo.svg';
@@ -9,9 +13,36 @@ import { getTransactionPool, setTransactionPool } from "./crypto/transactionPool
 import {
   handleBlockchainResponse
 } from "./crypto/p2p";
+import classnames from "classnames";
+
+// reactstrap components
+import {
+  Badge,
+  Button,
+  Card,
+  CardBody,
+  CardImg,
+  Form,
+  FormGroup,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col
+} from "reactstrap";
+
+
+
+
+
+
     const socket = io('http://jerry-server.herokuapp.com', {
       transports: ['websocket']
     });
+
+
 function App() {
 
     const [data, setData] = useState(0);
@@ -73,13 +104,6 @@ handleBlockchainResponse(bc)
           console.log(cookies.jerry);
           setPrivateKey(getPublicFromWallet());
         }
-
-            //  const newBlock = generateNextBlock();
-
-            //  sendTransaction(generatePrivateKey(), 2);
-            //  setTxPool(getTransactionPool());
-            //  console.log(getTransactionPool());
-            //  setBalance(getAccountBalance());
         return () => {
           socket.emit("disconnect");
         }
@@ -88,55 +112,73 @@ handleBlockchainResponse(bc)
 
   return (
     <>
-    <h1> Test </h1>
-    <p>{ data }</p>
+      <h1> Jerry Coin </h1>
+      {/* <p>{data}</p> */}
+      <Form>
+      <Row>
+      <Col>
+      <Input
+      type = "text"
+      value = {
+        address
+      }
+      onChange = {
+        e => setAddress(e.target.value)
+      }
+      />
+      </Col>
 
-    <input
-          type="text"
-          value={address}
-          onChange={e => setAddress(e.target.value)}
-        />
-           < input
-           type = "text"
-           value = {
-             amount
+      <Col>
+       <Input
+       type = "text"
+       value = {
+         amount
+       }
+       onChange = {
+         e => {
+           let amount;
+           if (e.target.value == "") {
+             amount = 0;
+           } else {
+             amount = parseInt(e.target.value);
            }
-           onChange = { (e) => {
-             let amount;
-             if(e.target.value == "") {
-               amount = 0;
-             } else {
-              amount = parseInt(e.target.value);
-             }
-              setAmount(amount)
-           }}
-           />
+           setAmount(amount);
+         }
+       }
+       />
+      </Col>
 
-           < button onClick = { () => {
-             generateNextBlock();
-             setBalance(getAccountBalance());
-             socket.emit("sendBlockchain", getBlockchain());
-            } } >generateNextBlock </button>
+      </Row>
+      </Form>
+      
+      
+     
 
-            < button onClick = {
-              () => {
-                
-                socket.emit("sendTx", sendTransaction(address, amount));
-              }
-            } > sendTransaction </button>
-           
+      <Button
+        onClick={() => {
+          generateNextBlock();
+          setBalance(getAccountBalance());
+          socket.emit("sendBlockchain", getBlockchain());
+        }}
+      >
+        Generate Block
+      </Button>
 
-           {txPool.forEach( (item) => {
-              return (<p>item.id</p>);
-           }
-             
-           ) }
+      <Button
+        onClick={() => {
+          socket.emit("sendTx", sendTransaction(address, amount));
+        }}
+      >
+        Send Transaction
+      </Button>
 
-<p> {privateKey} </p>
-<p> {balance} </p>
- <p> transactionPool: </p> 
+      {/* {txPool.forEach(item => {
+        return <p>item.id</p>;
+      })} */}
 
- 
+      <p> {privateKey} </p>
+      <p> {balance} </p>
+     
     </>
   );
 }
