@@ -2,18 +2,31 @@
   "name": "jerrycoin",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://siwiec.us/jerrycoin",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/crypto-js": "^3.1.43",
+    "@types/lodash": "^4.14.149",
+    "crypto-js": "^3.1.9-1",
+    "elliptic": "^6.5.2",
+    "js-cookie": "^2.2.1",
+    "lodash": "^4.17.15",
     "react": "^16.12.0",
+    "react-cookie": "^4.0.1",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "typescript": "^3.7.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
