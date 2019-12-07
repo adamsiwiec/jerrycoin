@@ -32,17 +32,20 @@ import {
   Row,
   Col
 } from "reactstrap";
+import useSocket from "use-socket.io-client";
 
 import { useAlert } from "react-alert"
 import QRCode from "qrcode.react";
 
-    const socket = io('http://jerry-server.herokuapp.com', {
-      transports: ['websocket']
-    });
+    // const socket = io('https://jerry-server.herokuapp.com', {
+    //   transports: ['websocket']
+    // });
 
 
 function App() {
-
+    const [socket] = useSocket("https://jerry-server.herokuapp.com", {
+       transports: ['websocket']
+     });
     const [data, setData] = useState(0);
     const [first, setFirst] = useState(true);
     const [cookies, setCookie, removeCookie] = useCookies(['jerry']);
@@ -61,23 +64,26 @@ function App() {
     }, [setBalance]);
     
     let refreshBlock = useCallback((bc) => {
-        handleBlockchainResponse(bc);
         alert.show("Got New Block #" + bc.length);
+                    console.log(bc);
+
+        handleBlockchainResponse(bc);
         updateBalance();
     }, [alert, updateBalance]);
 
     let refreshTxPool = useCallback((Tx) => {
+            console.log(Tx);
             alert.show("Got New Transaction Pool");
             setTransactionPool(Tx);
             setTxPool(Tx);
     }, [alert]);
 
 
+        socket.connect();
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
         console.log("yeah", cookies.jerry)
-
         //Very simply connect to the socket
         //Listen for data on the "outgoing data" namespace and supply a callback for what to do when we get one. In this case, we set a state variable
         if (first)  {
@@ -85,25 +91,25 @@ function App() {
           socket.emit("getTxPool");
           socket.emit("getBlockchain");
           setFirst(false);
+           socket.on("resTxPool", TxPool => {
+             console.log("got pool:", TxPool);
+             refreshTxPool(TxPool);
+           });
+           socket.on("resBlockchain", bc => {
+             console.log("got bc:", bc);
+             refreshBlock(bc);
+           });
+
+           socket.on("tx", TxPool => {
+             console.log("got pool:", TxPool);
+             refreshTxPool(TxPool);
+           });
+           socket.on("bc", bc => {
+             console.log("got bc:", bc);
+             refreshBlock(bc);
+           });
         }
-        socket.on("resTxPool", (TxPool) => {
-            console.log("got pool:", TxPool);
-            refreshTxPool(TxPool);
-          })
-        socket.on("resBlockchain", (bc) => {
-          console.log("got bc:", bc);
-          refreshBlock(bc);
-        })
-
-              socket.on("tx", (TxPool) => {
-                console.log("got pool:", TxPool);
-                refreshTxPool(TxPool);
-              })
-              socket.on("bc", (bc) => {
-                console.log("got bc:", bc);
-                refreshBlock(bc);
-
-              })
+       
 
 
         if(cookies.jerry == undefined) {
@@ -119,11 +125,12 @@ function App() {
         return () => {
           socket.emit("disconnect");
         }
-  }, [cookies, privateKey, first, setBalance, setPrivateKey, removeCookie, setCookie, refreshBlock, refreshTxPool]);
+  }, [cookies, privateKey, first, setBalance, setPrivateKey, removeCookie, setCookie, refreshBlock, refreshTxPool, socket]);
 
 
   return (
     <>
+    <img src={require('./assets/ultimateJerry.gif')}/>
       <h1> Jerry Coin </h1>
       {/* <p>{data}</p> */}
       <Form>
