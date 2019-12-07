@@ -1,26 +1,27 @@
 {
   "files": {
     "main.css": "/jerrycoin/static/css/main.1449caa5.chunk.css",
-    "main.js": "/jerrycoin/static/js/main.06cc8b04.chunk.js",
-    "main.js.map": "/jerrycoin/static/js/main.06cc8b04.chunk.js.map",
+    "main.js": "/jerrycoin/static/js/main.def4c2a1.chunk.js",
+    "main.js.map": "/jerrycoin/static/js/main.def4c2a1.chunk.js.map",
     "runtime-main.js": "/jerrycoin/static/js/runtime-main.36bc6fdb.js",
     "runtime-main.js.map": "/jerrycoin/static/js/runtime-main.36bc6fdb.js.map",
-    "static/js/2.73650adc.chunk.js": "/jerrycoin/static/js/2.73650adc.chunk.js",
-    "static/js/2.73650adc.chunk.js.map": "/jerrycoin/static/js/2.73650adc.chunk.js.map",
+    "static/js/2.e8340ee5.chunk.js": "/jerrycoin/static/js/2.e8340ee5.chunk.js",
+    "static/js/2.e8340ee5.chunk.js.map": "/jerrycoin/static/js/2.e8340ee5.chunk.js.map",
     "index.html": "/jerrycoin/index.html",
-    "precache-manifest.791bc77b613ccc96165e257bb48a7e28.js": "/jerrycoin/precache-manifest.791bc77b613ccc96165e257bb48a7e28.js",
+    "precache-manifest.66bd2f5eeb1ae6f938e794f462052cfc.js": "/jerrycoin/precache-manifest.66bd2f5eeb1ae6f938e794f462052cfc.js",
     "service-worker.js": "/jerrycoin/service-worker.js",
     "static/css/main.1449caa5.chunk.css.map": "/jerrycoin/static/css/main.1449caa5.chunk.css.map",
-    "static/js/2.73650adc.chunk.js.LICENSE": "/jerrycoin/static/js/2.73650adc.chunk.js.LICENSE",
-    "static/js/main.06cc8b04.chunk.js.LICENSE": "/jerrycoin/static/js/main.06cc8b04.chunk.js.LICENSE",
+    "static/js/2.e8340ee5.chunk.js.LICENSE": "/jerrycoin/static/js/2.e8340ee5.chunk.js.LICENSE",
+    "static/js/main.def4c2a1.chunk.js.LICENSE": "/jerrycoin/static/js/main.def4c2a1.chunk.js.LICENSE",
     "static/media/font-awesome.min.css": "/jerrycoin/static/media/fontawesome-webfont.fee66e71.woff",
     "static/media/logo.svg": "/jerrycoin/static/media/logo.5d5d9eef.svg",
-    "static/media/nucleo.css": "/jerrycoin/static/media/nucleo-icons.f82ec6ba.ttf"
+    "static/media/nucleo.css": "/jerrycoin/static/media/nucleo-icons.f82ec6ba.ttf",
+    "static/media/ultimateJerry.gif": "/jerrycoin/static/media/ultimateJerry.7b5461f3.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.36bc6fdb.js",
-    "static/js/2.73650adc.chunk.js",
+    "static/js/2.e8340ee5.chunk.js",
     "static/css/main.1449caa5.chunk.css",
-    "static/js/main.06cc8b04.chunk.js"
+    "static/js/main.def4c2a1.chunk.js"
   ]
 }
