@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f4c20f8140653858d84c29c7af4d142d",
+    "revision": "02154978b4e7401a106fe994b9ee4a82",
     "url": "/jerrycoin/index.html"
   },
   {
-    "revision": "5ba2e7f325c85490d718",
+    "revision": "f5d0abc125c7adc17eea",
     "url": "/jerrycoin/static/css/main.1449caa5.chunk.css"
   },
   {
-    "revision": "02563d6cd7ef8dfe61cb",
-    "url": "/jerrycoin/static/js/2.20cdd1e7.chunk.js"
+    "revision": "54c8669217984d5f7322",
+    "url": "/jerrycoin/static/js/2.73650adc.chunk.js"
   },
   {
     "revision": "8ae6d694a423f982db55c7059fa42a04",
-    "url": "/jerrycoin/static/js/2.20cdd1e7.chunk.js.LICENSE"
+    "url": "/jerrycoin/static/js/2.73650adc.chunk.js.LICENSE"
   },
   {
-    "revision": "5ba2e7f325c85490d718",
-    "url": "/jerrycoin/static/js/main.f7f409f8.chunk.js"
+    "revision": "f5d0abc125c7adc17eea",
+    "url": "/jerrycoin/static/js/main.06cc8b04.chunk.js"
   },
   {
     "revision": "a9d0c88355681937f45a6ebfeeab0d83",
-    "url": "/jerrycoin/static/js/main.f7f409f8.chunk.js.LICENSE"
+    "url": "/jerrycoin/static/js/main.06cc8b04.chunk.js.LICENSE"
   },
   {
     "revision": "d399cb83b011b2c7e2be",
