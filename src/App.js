@@ -2,7 +2,7 @@
 // import "assets/vendor/font-awesome/css/font-awesome.min.css";
 // import "assets/scss/argon-design-system-react.scss";
 
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import io from 'socket.io-client';
 import logo from './logo.svg';
 import './App.css';
@@ -33,10 +33,8 @@ import {
   Col
 } from "reactstrap";
 
-
-
-
-
+import { useAlert } from "react-alert"
+import QRCode from "qrcode.react";
 
     const socket = io('http://jerry-server.herokuapp.com', {
       transports: ['websocket']
@@ -49,11 +47,32 @@ function App() {
     const [first, setFirst] = useState(true);
     const [cookies, setCookie, removeCookie] = useCookies(['jerry']);
     const [privateKey, setPrivateKey] = useState("");
-    const [balance, setBalance] = useState();// useState(getAccountBalance());
+    const [balance, setBalance] = useState(0);// useState(getAccountBalance());
     const [txPool, setTxPool] = useState(getTransactionPool());
     const [address, setAddress] = useState("");
     const [amount, setAmount] = useState(0);
     const [bc, setBc] = useState(getBlockchain());
+    const alert = useAlert();
+
+
+
+    let updateBalance = useCallback(() => {
+      setBalance(getAccountBalance());
+    }, [setBalance]);
+    
+    let refreshBlock = useCallback((bc) => {
+        handleBlockchainResponse(bc);
+        alert.show("Got New Block #" + bc.length);
+        updateBalance();
+    }, [alert, updateBalance]);
+
+    let refreshTxPool = useCallback((Tx) => {
+            alert.show("Got New Transaction Pool");
+            setTransactionPool(Tx);
+            setTxPool(Tx);
+    }, [alert]);
+
+
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
@@ -69,28 +88,21 @@ function App() {
         }
         socket.on("resTxPool", (TxPool) => {
             console.log("got pool:", TxPool);
-            setTransactionPool(TxPool);
-            setTxPool(TxPool);
-        })
+            refreshTxPool(TxPool);
+          })
         socket.on("resBlockchain", (bc) => {
           console.log("got bc:", bc);
-          if(bc.length > 0) {
-handleBlockchainResponse(bc)
- setBc(bc);
-          }
+          refreshBlock(bc);
         })
 
               socket.on("tx", (TxPool) => {
                 console.log("got pool:", TxPool);
-                setTransactionPool(TxPool);
-                setTxPool(TxPool);
+                refreshTxPool(TxPool);
               })
               socket.on("bc", (bc) => {
                 console.log("got bc:", bc);
-                if (bc.length > 0) {
-                  handleBlockchainResponse(bc);
-                  setBc(bc);
-                }
+                refreshBlock(bc);
+
               })
 
 
@@ -107,7 +119,7 @@ handleBlockchainResponse(bc)
         return () => {
           socket.emit("disconnect");
         }
-  }, [cookies, privateKey, first, setBalance, setPrivateKey, removeCookie, setCookie]);
+  }, [cookies, privateKey, first, setBalance, setPrivateKey, removeCookie, setCookie, refreshBlock, refreshTxPool]);
 
 
   return (
@@ -115,44 +127,34 @@ handleBlockchainResponse(bc)
       <h1> Jerry Coin </h1>
       {/* <p>{data}</p> */}
       <Form>
-      <Row>
-      <Col>
-      <Input
-      type = "text"
-      value = {
-        address
-      }
-      onChange = {
-        e => setAddress(e.target.value)
-      }
-      />
-      </Col>
+        <Row>
+          <Col>
+            <Input
+              type="text"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+            />
+          </Col>
 
-      <Col>
-       <Input
-       type = "text"
-       value = {
-         amount
-       }
-       onChange = {
-         e => {
-           let amount;
-           if (e.target.value == "") {
-             amount = 0;
-           } else {
-             amount = parseInt(e.target.value);
-           }
-           setAmount(amount);
-         }
-       }
-       />
-      </Col>
-
-      </Row>
+          <Col>
+            <Input
+              type="text"
+              value={amount}
+              onChange={e => {
+                let amount;
+                if (e.target.value == "") {
+                  amount = 0;
+                } else {
+                  amount = parseInt(e.target.value);
+                }
+                setAmount(amount);
+              }}
+            />
+          </Col>
+        </Row>
       </Form>
-      
-      
-     
+
+      <QRCode value={privateKey} />
 
       <Button
         onClick={() => {
@@ -172,13 +174,12 @@ handleBlockchainResponse(bc)
         Send Transaction
       </Button>
 
-      {/* {txPool.forEach(item => {
+      {txPool.forEach(item => {
         return <p>item.id</p>;
-      })} */}
+      })}
 
       <p> {privateKey} </p>
       <p> {balance} </p>
-     
     </>
   );
 }

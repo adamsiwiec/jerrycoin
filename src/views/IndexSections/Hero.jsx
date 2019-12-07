@@ -21,6 +21,7 @@ import React from "react";
 import { Button, Container, Row, Col } from "reactstrap";
 import App from "../../App"
 
+
 class Hero extends React.Component {
   render() {
     return (
@@ -52,7 +53,9 @@ class Hero extends React.Component {
               <div className="col px-0">
                 <Row className="align-items-center justify-content-center">
                   <Col className="text-center" lg="6">
+
                     <App />
+
                   </Col>
                 </Row>
               </div>

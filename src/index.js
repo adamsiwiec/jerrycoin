@@ -13,7 +13,17 @@ import Login from "./views/examples/Login.jsx";
 import Profile from "./views/examples/Profile.jsx";
 import Register from "./views/examples/Register.jsx";
 
+import { positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+const options = {
+  timeout: 5000,
+  position: positions.BOTTOM_RIGHT
+};
+
 ReactDOM.render(
+<Provider template={AlertTemplate} {...options}>
+
   <BrowserRouter>
     <Switch>
       <Route path="/" exact render={props => <Index {...props} />} />
@@ -35,6 +45,7 @@ ReactDOM.render(
       />
       <Redirect to="/" />
     </Switch>
-  </BrowserRouter>,
+  </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
