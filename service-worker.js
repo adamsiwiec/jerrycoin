@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/jerrycoin/precache-manifest.66bd2f5eeb1ae6f938e794f462052cfc.js"
+  "/jerrycoin/precache-manifest.2f670bc7f7357a93fb3c7b21231ca16e.js"
 );
 
 self.addEventListener('message', (event) => {
