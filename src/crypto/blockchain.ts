@@ -51,7 +51,7 @@ let unspentTxOuts: UnspentTxOut[] = processTransactions(blockchain[0].data, [], 
 const getBlockchain = (): Block[] => blockchain;
 
 const setBlockchain = (bc: Block[]) => {
-  blockchain = bc;
+  blockchain = bc; 
   unspentTxOuts = isValidChain(blockchain);
 };
 
@@ -66,10 +66,10 @@ const setUnspentTxOuts = (newUnspentTxOut: UnspentTxOut[]) => {
 const getLatestBlock = (): Block => blockchain[blockchain.length - 1];
 
 // in seconds
-const BLOCK_GENERATION_INTERVAL: number = 300;
+const BLOCK_GENERATION_INTERVAL: number = 10;
 
 // in blocks
-const DIFFICULTY_ADJUSTMENT_INTERVAL: number = 1;
+const DIFFICULTY_ADJUSTMENT_INTERVAL: number = 5;
 
 const getDifficulty = (aBlockchain: Block[]): number => {
     const latestBlock: Block = aBlockchain[blockchain.length - 1];
@@ -161,7 +161,7 @@ const calculateHashForBlock = (block: Block): string =>
 
 const calculateHash = (index: number, previousHash: string, timestamp: number, data: Transaction[],
                        difficulty: number, nonce: number): string =>
-    CryptoJS.SHA256(index + previousHash + timestamp + data + difficulty + nonce).toString();
+     CryptoJS.SHA256(index + previousHash + timestamp + data + difficulty + nonce).toString();
 
 const isValidBlockStructure = (block: Block): boolean => {
     return typeof block.index === 'number'

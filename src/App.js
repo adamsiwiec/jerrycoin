@@ -177,7 +177,7 @@ function App() {
          }
        }
        />
-      <InputGroupAddon>
+      <InputGroupAddon addonType="append">
       <Button onClick={() => {
          setUsername(tempUser);
        }}>Set Username</Button>
@@ -188,9 +188,16 @@ function App() {
        
        {username != "" &&
        <>
-          <Label>
-            Send Address
+       <Row>
+         <Col md="3">
+          <Label >
+           < p classnames = "text-white" > Send Address </p>
           </Label>
+          </Col>
+          <Col md="9">
+          </Col>
+       </Row>
+          
 
 
           <InputGroup>
@@ -206,7 +213,15 @@ function App() {
           </InputGroup>
           
           <br></br>
-          
+           <Row>
+         <Col md="2">
+          <Label >
+           < p classnames = "text-white" > Amount </p>
+          </Label>
+          </Col>
+          <Col md="10">
+          </Col>
+       </Row>
          <InputGroup>
          <InputGroupAddon>
          <InputGroupText>
@@ -261,15 +276,17 @@ function App() {
 
        <ul> {
            users.map(user => {
-            return ( <Card>
+            return ( <Card onClick={() => {
+              setAddress(user.publicKey)
+            }}>
               <p> { user.username } </p> 
               </Card>)
            }) 
            } 
          </ul>
 
-      <p> {privateKey} </p>
-      <p> {balance} </p>
+      <p className="lead"> {privateKey} </p>
+      <p className="lead"> {balance} </p>
       </>
           }
       </Container>
