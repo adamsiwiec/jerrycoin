@@ -270,7 +270,7 @@ function App() {
               </Col>
             </Row>
 
-            <ul>
+              <p>Click On Users To Load Their Address:</p>
               {users.map(user => {
                 return (
                   <Card
@@ -282,7 +282,6 @@ function App() {
                   </Card>
                 );
               })}
-            </ul>
 
             
           </>
