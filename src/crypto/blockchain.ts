@@ -1,6 +1,5 @@
 import * as CryptoJS from 'crypto-js';
 import * as _ from 'lodash';
-import {broadcastLatest, broadCastTransactionPool} from './p2p';
 import {
     getCoinbaseTransaction, isValidAddress, processTransactions, Transaction, UnspentTxOut
 } from './transaction';
@@ -102,7 +101,6 @@ const generateRawNextBlock = (blockData: Transaction[]) => {
     const nextTimestamp: number = getCurrentTimestamp();
     const newBlock: Block = findBlock(nextIndex, previousBlock.hash, nextTimestamp, blockData, difficulty);
     if (addBlockToChain(newBlock)) {
-        broadcastLatest();
         return newBlock;
     } else {
         return null;
@@ -152,7 +150,6 @@ const getAccountBalance = (): number => {
 const sendTransaction = (address: string, amount: number): Transaction => {
     const tx: Transaction = createTransaction(address, amount, getPrivateFromWallet(), getUnspentTxOuts(), getTransactionPool());
     addToTransactionPool(tx, getUnspentTxOuts());
-    broadCastTransactionPool();
     return tx;
 };
 
@@ -286,7 +283,6 @@ const replaceChain = (newBlocks: Block[]) => {
         blockchain = newBlocks;
         setUnspentTxOuts(aUnspentTxOuts);
         updateTransactionPool(unspentTxOuts);
-        broadcastLatest();
     } else {
         console.log('Received blockchain invalid');
     }
