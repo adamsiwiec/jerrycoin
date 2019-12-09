@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/jerrycoin/static/css/main.65334404.chunk.css",
-    "main.js": "/jerrycoin/static/js/main.7dc25a22.chunk.js",
-    "main.js.map": "/jerrycoin/static/js/main.7dc25a22.chunk.js.map",
+    "main.js": "/jerrycoin/static/js/main.b2a3cfaf.chunk.js",
+    "main.js.map": "/jerrycoin/static/js/main.b2a3cfaf.chunk.js.map",
     "runtime-main.js": "/jerrycoin/static/js/runtime-main.36bc6fdb.js",
     "runtime-main.js.map": "/jerrycoin/static/js/runtime-main.36bc6fdb.js.map",
     "static/js/2.7fc10b63.chunk.js": "/jerrycoin/static/js/2.7fc10b63.chunk.js",
     "static/js/2.7fc10b63.chunk.js.map": "/jerrycoin/static/js/2.7fc10b63.chunk.js.map",
     "index.html": "/jerrycoin/index.html",
-    "precache-manifest.3dbec43f17efea0a02c7e357fe57c2a2.js": "/jerrycoin/precache-manifest.3dbec43f17efea0a02c7e357fe57c2a2.js",
+    "precache-manifest.180f91401c4f58d9eea6f6bc702a59df.js": "/jerrycoin/precache-manifest.180f91401c4f58d9eea6f6bc702a59df.js",
     "service-worker.js": "/jerrycoin/service-worker.js",
     "static/css/main.65334404.chunk.css.map": "/jerrycoin/static/css/main.65334404.chunk.css.map",
     "static/js/2.7fc10b63.chunk.js.LICENSE": "/jerrycoin/static/js/2.7fc10b63.chunk.js.LICENSE",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.36bc6fdb.js",
     "static/js/2.7fc10b63.chunk.js",
     "static/css/main.65334404.chunk.css",
-    "static/js/main.7dc25a22.chunk.js"
+    "static/js/main.b2a3cfaf.chunk.js"
   ]
 }
