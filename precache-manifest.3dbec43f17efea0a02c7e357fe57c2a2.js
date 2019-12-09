@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "112aac10a3d065148d3f5e9f3825c901",
+    "revision": "a90db85e785c26f9267ec975972e9c9f",
     "url": "/jerrycoin/index.html"
   },
   {
-    "revision": "2581135975c2f6593276",
+    "revision": "e5c59f182f1d8dfff0b2",
     "url": "/jerrycoin/static/css/main.65334404.chunk.css"
   },
   {
-    "revision": "7a15dc3c3970dea7ebcd",
-    "url": "/jerrycoin/static/js/2.903b5798.chunk.js"
+    "revision": "ed6d80038dd91ac88399",
+    "url": "/jerrycoin/static/js/2.7fc10b63.chunk.js"
   },
   {
     "revision": "9d40529f79d6b9db685cd7ec1a7af579",
-    "url": "/jerrycoin/static/js/2.903b5798.chunk.js.LICENSE"
+    "url": "/jerrycoin/static/js/2.7fc10b63.chunk.js.LICENSE"
   },
   {
-    "revision": "2581135975c2f6593276",
-    "url": "/jerrycoin/static/js/main.462a0d9e.chunk.js"
+    "revision": "e5c59f182f1d8dfff0b2",
+    "url": "/jerrycoin/static/js/main.7dc25a22.chunk.js"
   },
   {
     "revision": "d399cb83b011b2c7e2be",
