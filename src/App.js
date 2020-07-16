@@ -29,7 +29,7 @@ import { useAlert } from "react-alert";
 import QRCode from "qrcode.react";
 
 function App() {
-  const [socket] = useSocket("https://jerry-server.herokuapp.com", {
+  const [socket] = useSocket("https://jerrycoinserver.siwiec.us", {
     transports: ["websocket"]
   });
   const [first, setFirst] = useState(true);
